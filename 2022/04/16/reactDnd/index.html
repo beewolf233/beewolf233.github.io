@@ -16,19 +16,45 @@
   <meta name="author" content="beeWolf">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="归档">
-<meta property="og:url" content="http://example.com/archives/2022/index.html">
+    <meta name="description" content="先一个《青春变形记》海报镇楼，强烈推荐🌟🌟🌟🌟🌟最近项目中使用react-dnd，出现了一些警告bug，为了弄清警告来源，开始研究react-dnd源码，发现作者的思路简直神级，想和大家分享一下～ react-dnd设计思路就此 整个拖拽过程，就形成了一个正常工作链，这是不是就结束了呢？？进行思考🤔虽然 员工 AA 干活我们是知道的， 毕竟这是在HTML中，拖拽都是通过DOM节点去工">
+<meta property="og:type" content="article">
+<meta property="og:title" content="从零开始实现一个mini reactDnd 👉">
+<meta property="og:url" content="http://example.com/2022/04/16/reactDnd/index.html">
 <meta property="og:site_name" content="BeeWolf">
+<meta property="og:description" content="先一个《青春变形记》海报镇楼，强烈推荐🌟🌟🌟🌟🌟最近项目中使用react-dnd，出现了一些警告bug，为了弄清警告来源，开始研究react-dnd源码，发现作者的思路简直神级，想和大家分享一下～ react-dnd设计思路就此 整个拖拽过程，就形成了一个正常工作链，这是不是就结束了呢？？进行思考🤔虽然 员工 AA 干活我们是知道的， 毕竟这是在HTML中，拖拽都是通过DOM节点去工">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/2022/04/16/reactDnd/redpanda.jpg">
+<meta property="og:image" content="http://example.com/2022/04/16/reactDnd/step1.png">
+<meta property="og:image" content="http://example.com/2022/04/16/reactDnd/step2.png">
+<meta property="og:image" content="http://example.com/2022/04/16/reactDnd/step3.png">
+<meta property="og:image" content="http://example.com/2022/04/16/reactDnd/step4.png">
+<meta property="article:published_time" content="2022-04-16T06:24:45.000Z">
+<meta property="article:modified_time" content="2022-04-16T10:03:39.152Z">
 <meta property="article:author" content="beeWolf">
+<meta property="article:tag" content="mini-react-dnd">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/2022/04/16/reactDnd/redpanda.jpg">
   
   
-  <title>归档 - BeeWolf</title>
+  <title>从零开始实现一个mini reactDnd 👉 - BeeWolf</title>
 
   <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4/dist/css/bootstrap.min.css" />
 
+
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/github-markdown-css@4/github-markdown.min.css" />
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hint.css@2/hint.min.css" />
+
+  
+    
+    
+      
+      <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@10/styles/github-gist.min.css" />
+    
+  
+
+  
+    <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.css" />
+  
 
 
 <!-- 主题依赖的图标库，不要自行修改 -->
@@ -55,7 +81,7 @@
 
 
 <body>
-  <header style="height: 60vh;">
+  <header style="height: 70vh;">
     <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -156,9 +182,43 @@
       <div class="full-bg-img">
         <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
           <div class="page-header text-center fade-in-up">
-            <span class="h2" id="subtitle" title="归档">
+            <span class="h2" id="subtitle" title="从零开始实现一个mini reactDnd 👉">
               
             </span>
+
+            
+              <div class="mt-3">
+  
+  
+    <span class="post-meta">
+      <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+      <time datetime="2022-04-16 14:24" pubdate>
+        2022年4月16日 下午
+      </time>
+    </span>
+  
+</div>
+
+<div class="mt-1">
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-chart"></i>
+      259 字
+    </span>
+  
+
+  
+    <span class="post-meta mr-2">
+      <i class="iconfont icon-clock-fill"></i>
+      
+      
+      3 分钟
+    </span>
+  
+
+  
+  
+</div>
 
             
           </div>
@@ -171,40 +231,78 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div class="py-5" id="board"
-          >
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
-
-<div class="list-group">
-  <p class="h4">共计 1 篇文章</p>
-  <hr>
-  
-  
-    
       
-      <p class="h5">2022</p>
-    
-    <a href="/2022/04/16/reactDnd/" class="list-group-item list-group-item-action">
-      <span class="archive-post-title">从零开始实现一个mini reactDnd 👉</span>
-      <time style="float: right;">04-16</time>
-    </a>
-  
-</div>
 
-
-
-
-
-              </div>
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="d-none d-lg-block col-lg-2"></div>
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div class="py-5" id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">从零开始实现一个mini reactDnd 👉</h1>
+            
+            <div class="markdown-body">
+              <p><img src="/2022/04/16/reactDnd/redpanda.jpg" srcset="/img/loading.gif" lazyload></p>
+<p>先一个《青春变形记》海报镇楼，强烈推荐🌟🌟🌟🌟🌟<br>最近项目中使用react-dnd，出现了一些警告bug，为了弄清警告来源，开始研究react-dnd源码，发现作者的思路简直神级，想和大家分享一下～</p>
+<h2 id="react-dnd设计思路"><a href="#react-dnd设计思路" class="headerlink" title="react-dnd设计思路"></a>react-dnd设计思路</h2><p><img src="/2022/04/16/reactDnd/step1.png" srcset="/img/loading.gif" lazyload><br><img src="/2022/04/16/reactDnd/step2.png" srcset="/img/loading.gif" lazyload><br><img src="/2022/04/16/reactDnd/step3.png" srcset="/img/loading.gif" lazyload><br>就此 整个拖拽过程，就形成了一个正常工作链，这是不是就结束了呢？？<br>进行思考🤔<br>虽然 员工 AA 干活我们是知道的， 毕竟这是在HTML中，拖拽都是通过DOM节点去工作的，<br>怎么能将 员工AA 一个class类  和 DOM拖拽功能结合呢<br><img src="/2022/04/16/reactDnd/step4.png" srcset="/img/loading.gif" lazyload><br>通过以上，就是整个react-dnd的设计思想了，有没有很巧妙呢</p>
+<h2 id="开始实现"><a href="#开始实现" class="headerlink" title="开始实现"></a>开始实现</h2>
             </div>
-          </div>
+            <hr>
+            <div>
+              <div class="post-metas mb-3">
+                
+                
+                  <div class="post-meta">
+                    <i class="iconfont icon-tags"></i>
+                    
+                      <a class="hover-with-bg" href="/tags/mini-react-dnd/">mini-react-dnd</a>
+                    
+                  </div>
+                
+              </div>
+              
+                <p class="note note-warning">
+                  
+                    本博客所有文章除特别声明外，均采用 <a target="_blank" href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh" rel="nofollow noopener noopener">CC BY-SA 4.0 协议</a> ，转载请注明出处！
+                  
+                </p>
+              
+              
+                <div class="post-prevnext">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
         </div>
       </div>
+    </div>
+    
+      <div class="d-none d-lg-block col-lg-2 toc-container" id="toc-ctn">
+        <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+      </div>
+    
+  </div>
+</div>
+
+<!-- Custom -->
+
+
     
 
     
@@ -287,6 +385,19 @@
   
 
 
+
+  
+    <script  src="https://cdn.jsdelivr.net/npm/tocbot@4/dist/tocbot.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3/dist/jquery.fancybox.min.js" ></script>
+  
+  
+    <script  src="https://cdn.jsdelivr.net/npm/anchor-js@4/anchor.min.js" ></script>
+  
+  
+    <script defer src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js" ></script>
+  
 
 
 

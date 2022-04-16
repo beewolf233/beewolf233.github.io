@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  
+  
+  
+  <entry>
+    <title>从零开始实现一个mini reactDnd 👉</title>
+    <link href="/2022/04/16/reactDnd/"/>
+    <url>/2022/04/16/reactDnd/</url>
+    
+    <content type="html"><![CDATA[<p><img src="/2022/04/16/reactDnd/redpanda.jpg"></p><p>先一个《青春变形记》海报镇楼，强烈推荐🌟🌟🌟🌟🌟<br>最近项目中使用react-dnd，出现了一些警告bug，为了弄清警告来源，开始研究react-dnd源码，发现作者的思路简直神级，想和大家分享一下～</p><h2 id="react-dnd设计思路"><a href="#react-dnd设计思路" class="headerlink" title="react-dnd设计思路"></a>react-dnd设计思路</h2><p><img src="/2022/04/16/reactDnd/step1.png"><br><img src="/2022/04/16/reactDnd/step2.png"><br><img src="/2022/04/16/reactDnd/step3.png"><br>就此 整个拖拽过程，就形成了一个正常工作链，这是不是就结束了呢？？<br>进行思考🤔<br>虽然 员工 AA 干活我们是知道的， 毕竟这是在HTML中，拖拽都是通过DOM节点去工作的，<br>怎么能将 员工AA 一个class类  和 DOM拖拽功能结合呢<br><img src="/2022/04/16/reactDnd/step4.png"><br>通过以上，就是整个react-dnd的设计思想了，有没有很巧妙呢</p><h2 id="开始实现"><a href="#开始实现" class="headerlink" title="开始实现"></a>开始实现</h2>]]></content>
+    
+    
+    
+    <tags>
+      
+      <tag>mini-react-dnd</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  
+</search>
